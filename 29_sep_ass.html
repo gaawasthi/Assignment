@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style></style>
+</head>
+<style>
+  .box {
+    border: 2px solid blue;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .inner-box {
+    border: 2px solid red;
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .inner-inner-box {
+    border: 2px solid green;
+    padding: 20px;
+    margin: 10px;
+  }
+  .para {
+    font-size: 25px;
+  }
+   #color-box {
+            width: 150px;
+            height: 150px;
+            
+            border: 2px solid #2980b9;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 1.2em;
+            margin-bottom: 20px; 
+        }
+
+     
+        #message-box {
+            width: 250px;
+            padding: 15px;
+            background-color: #2ecc71;
+            border: 1px solid #27ae60;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+</style>
+
+<body id="main" >
+  <div  >
+    <h1>Dom manipulation Assignement</h1>
+    <!-- modify the counter so it increae by 2 when you clicked the button -->
+    <!-- counter div -->
+    <div>
+      <h3>Counter:<span id="count">0</span></h3>
+      <p>click the buttons to update the counter</p>
+      <button class="btn" id="inc">increase by 2</button>
+      <button class="btn" id="dec">decrease by 2</button>
+      <button class="btn" id="reset">reset</button>
+    </div>
+    <!-- timmer div -->
+    <div>
+      <h3>Time: <span id="timmer"> 0 </span></h3>
+      <p>click the button to start,stop,pause the timmer</p>
+      <button class="btn" id="timmer-start">
+        decrease time by every one second
+      </button>
+      <button class="btn" id="timmer-stop">
+        stop timmer and remove event listener
+      </button>
+      <button class="btn" id="timmer-reset">reset the timmer</button>
+    </div>
+    <!-- event delegation -->
+    <h3>Event Delegation</h3>
+
+    <ul id="parent-list">
+      <li class="list">1</li>
+      <li class="list">2</li>
+      <li class="list">3</li>
+      <li class="list">4</li>
+      <li class="list">5</li>
+      <li class="list">6</li>
+    </ul>
+    <button class="btn" id="add-item">add there more item</button>
+    <!-- form prevent default -->
+    </br>
+    <div>
+      <h3>
+        <form action=""></form>
+      </h3>
+      <form id="myForm">
+        <input name="input" type="text" placeholder="Enter your name" required>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <p id="form-msg"></p>
+    </div>
+
+    <div>
+      <!-- toggle -->
+      <div>
+        <h3 class="" id="toggle">click to hide or show</h3>
+      </div>
+      <button id="toggle_btn">hide</button>
+    </div>
+
+    <hr>
+    <!-- medium level -->
+    <!-- Stop Propagation -->
+    <!-- stoppropagation , stop imidiate propagation  -->
+  </div>
+  <div>
+    <h3>Stop Propagation</h3>
+
+    <div class="box" id="outer-box">
+      Outer Box (click me)
+
+      <div class="inner-box" id="inner-box">
+        Inner Box (click me - stop propagation)
+
+        <div class="inner-inner-box" id="inner-inner-box">
+          Inner-Inner Box (click me - also stop propagation)
+        </div>
+      </div>
+    </div>
+    </div>
+         <div>
+            <div class="" id="parent-div"  >
+      <!-- Create & Remove DOM Elements
+Add a button "Add Paragraph" → creates a new <p> with text "Hello World" inside the page.\
+Add another button "Remove Paragraph" → removes the last paragraph created. -->
+        
+     
+    </div>
+        <button id="add_p" > Add </button>
+        <button id="remove_p" >Remove</button>
+
+         </div>
+
+         <div>
+          <!-- setTimeout vs setInterval
+Create a box that changes color every 2 seconds using setInterval.\
+Create another button "Stop Color Change" to clear the interval.\
+Add a one-time message "Hello after 5 sec" using setTimeout. -->
+         
+             <div id="color-box" > color box</div>
+             <div id="message-box"> </div>
+             <button id="stop-color" > stop color change</button>
+           
+         </div>
+         <div>
+          <!-- ataset Attributes
+Create buttons with data-color="red", data-color="green", data-color="blue".\
+When you click a button, the background color of the page should change according to the data-color attribute. -->
+             <button data-color="red"  id="redBtn" >   red</button>
+             <button data-color="green" id="greenBtn"  >  green</button>
+             <button data-color="blue"  id="blueBtn" >   blue</button>
+
+         </div>
+
+<!-- 
+ Style Manipulation
+ Add a button "Increase Font Size" → increases font size of a paragraph by +2px each click. Add another "Decrease Font Size" button. -->
+
+ <div class="style_manipulation" >
+  <p id="para" > increase or decrease the size of text </p>
+  <button id="increase-size" > Increase size </button>
+ <button id="decrease-size" > Decrease size </button>
+ </div>
+  
+
+  </div>
+
+
+
+
+  <script>
+    const counter = document.getElementById("count");
+    const incBtn = document.getElementById("inc");
+    const decBtn = document.getElementById("dec");
+    const reset = document.getElementById("reset");
+
+    incBtn.addEventListener("click", () => {
+      const { innerText = "" } = counter;
+      counter.innerText = +innerText + 2;
+    });
+    decBtn.addEventListener("click", () => {
+      const { innerText = "" } = counter;
+      counter.innerText = +innerText - 2;
+    });
+    //reset (task)
+    reset.addEventListener("click", () => {
+      const { innerText = "" } = counter;
+      counter.innerText = 0;
+    });
+
+    const timmer = document.getElementById("timmer");
+    const start = document.getElementById("timmer-start");
+    const stopTimmer = document.getElementById("timmer-stop");
+    const resetTimmer = document.getElementById("timmer-reset");
+    let id;
+    inceraseFunction = () => {
+      if (id) clearInterval(id);
+      id = setInterval(() => {
+        const { innerText = "" } = timmer;
+        timmer.innerText = +innerText - 1;
+      }, 1000);
+    };
+    start.addEventListener("click", inceraseFunction);
+    stopTimmer.addEventListener("click", () => {
+      if (id) clearInterval(id);
+      start.removeEventListener("click", inceraseFunction);
+    });
+
+    resetTimmer.addEventListener("click", () => {
+      const { innerText = "" } = timmer;
+      timmer.innerText = 0;
+    });
+
+    let pList = document.getElementById("parent-list");
+    let lists = document.querySelectorAll(".list");
+    const addItem = document.getElementById("add-item");
+    addItem.addEventListener("click", () => {
+      let lastCount = document.querySelectorAll(".list").length;
+
+      for (let i = 0; i < 3; i++) {
+        const el = document.createElement("li");
+        el.classList.add("list");
+        el.innerText = lastCount + 1;
+        pList.appendChild(el);
+
+        lastCount++;
+      }
+    });
+    const form = document.getElementById('myForm')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+    })
+
+    const toggle_el = document.getElementById('toggle');
+    const toggle_btn = document.getElementById('toggle_btn');
+
+    toggle_btn.addEventListener('click', () => {
+      if (toggle_el.style.display === 'none') {
+        toggle_el.style.display = 'block';
+        toggle_btn.innerText = 'hide'
+      } else {
+        toggle_el.style.display = 'none';
+        toggle_btn.innerText = 'show'
+      }
+    });
+
+    const innerBox = document.getElementById("inner-box")
+    const outerBox = document.getElementById("outer-box")
+    const innerInnerBox = document.getElementById("inner-inner-box")
+     
+   
+    outerBox.addEventListener('click' ,(e)=>{
+         console.log("clicked outer box")
+      })
+    innerBox.addEventListener('click',(e)=>{
+      console.log("clicked inner box")
+    })
+      
+     innerInnerBox.addEventListener('click',(e)=>{
+      e.stopPropagation()
+        console.log("clicked inner inner box")
+    })
+
+
+    const add_p = document.getElementById('add_p')
+     const remove_p = document.getElementById('remove_p')
+
+    const parent_div = document.getElementById('parent-div')
+
+     add_p.addEventListener('click',()=>{
+            newP = document.createElement('p')
+            newP.innerText = "hello World"
+            parent_div.appendChild(newP)
+    })
+     remove_p.addEventListener('click',()=>{
+          const lastChild = parent_div.lastElementChild
+          if(lastChild){
+            parent_div.removeChild(lastChild)
+          }
+    })
+   
+      let colorBox = document.getElementById('color-box')
+let messageBox = document.getElementById('message-box')
+let stop_btn = document.getElementById('stop-color')
+let intervalId
+
+function getRandomColor() {
+  const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+function changeColor() {
+  const randomC = getRandomColor()
+  colorBox.style.backgroundColor = randomC
+  
+}
+
+
+intervalId = setInterval(changeColor, 2000)
+
+
+stop_btn.addEventListener('click', () => {
+  clearInterval(intervalId)
+ 
+})
+window.addEventListener('load',()=>{
+       setTimeout(()=>{
+        messageBox.innerText = 'Hello after 5 sec'
+       },5000)    
+})
+main = document.getElementById('main')
+
+const red_btn = document.getElementById('redBtn')
+const green_btn = document.getElementById('greenBtn')
+const blue_btn = document.getElementById('blueBtn')
+
+red_btn.addEventListener('click',()=>{
+ const color1 =  red_btn.getAttribute('data-color')
+ main.style.backgroundColor = color1
+})
+green_btn.addEventListener('click',()=>{
+  const color2 =  green_btn.getAttribute('data-color')
+ main.style.backgroundColor = color2
+})
+blue_btn.addEventListener('click',()=>{
+ const color3 =  blue_btn.getAttribute('data-color')
+ main.style.backgroundColor = color3
+})
+
+const para = document.getElementById('para')
+const incSize = document.getElementById('increase-size')
+const decSize = document.getElementById('decrease-size')
+ 
+let size = 16
+ incSize.addEventListener('click',()=>{
+  size +=2
+   para.style.fontSize = `${size}px`
+
+ })
+
+ decSize.addEventListener('click',()=>{
+  size -=2
+   para.style.fontSize = `${size}px`
+ })
+</script>
+</body>
+
+</html>
