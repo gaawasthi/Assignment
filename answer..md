@@ -109,7 +109,8 @@ greater18(users)
 
 // Question:
 // Write a function to capitalize the first letter of each word in a string.
-function capitalizeWords(str) {
+function capitalizeWords(str) { 
+      return str.split(' ').map(word=>word.charAt(0).toUpperCase() +word.slice(1)).join(' ')
 
   
 }
@@ -123,14 +124,15 @@ function capitalizeWords(str) {
  const arr = [[1], [2], [3]];
  const copy1 = arr.slice();
  const copy2 = JSON.parse(JSON.stringify(arr));
- console.log(arr);
- copy1[0][0] = 0
+  copy1[0][0] = 0
  copy2[0][0] = 0
+ console.log(arr);
+
  console.log(copy1);
  console.log(copy2);
  
  
 
- // copy 1 is 
+ // copy 1 slice gives the refrence means it will creaate 
 
  // copy2 is deep copy because copy is creating new arr 
