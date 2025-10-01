@@ -133,6 +133,6 @@ function capitalizeWords(str) {
  
  
 
- // copy 1 slice gives the refrence means it will creaate 
+ // copy 1 slice creating shallow copy means it is copy only first level nested level are have refreence of original array  
 
- // copy2 is deep copy because copy is creating new arr 
+ // copy2 is deep copy because copy is creating new arr (new copy created without refresnce)
