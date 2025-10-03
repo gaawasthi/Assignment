@@ -25,11 +25,15 @@ a) number b) string c) undefined d) object
 
 Answer 2 -> b) string 
 
-3. What is the difference between `let` and `const`? (1 line)
-Answer let value can be changed and const value cannot 
+3. What is the difference between `let` and `const` (1 line)
 
+```js
+Answer let value can be changed and const value cannot 
+```
 4. Which operator is used for **spread syntax** in JavaScript?  
 a) `...` b) `??` c) `=>` d) `**`
+
+
 Answer -> a) `...` 
 
 5. What will this code output?
@@ -37,7 +41,9 @@ Answer -> a) `...` 
 console.log([1, 2, 3].map(n => n * 2));
 ```
 a) `[2, 4, 6]` b) `2,4,6` c) `undefined` d) `null`
-Anwer b) 2,4,6
+
+
+Anwer b) [2,4,6]
 
 6. Which of the following is true about arrow functions?  
 a) They have their own `this`  
