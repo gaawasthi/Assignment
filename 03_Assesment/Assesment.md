@@ -220,6 +220,29 @@ Write a script that:
 - Uses a Promise that resolves immediately to log “Promise resolved”  
 - Fetches `https://jsonplaceholder.typicode.com/todos/1` and logs `"Data fetched"`.  
 - Logs “End” at the end.
+```js
+console.log("Start")
+
+setTimeout(()=>{
+console.log("Timeout");
+
+})
+
+Promise.resolve(console.log("Promise resolved"))
+
+try{
+data = fetch("https://jsonplaceholder.typicode.com/todos/1 ")
+console.log("data fetched");
+
+}catch(e){
+console.log("Data not fetched " , e);
+
+}
+
+
+console.log("end");
+
+```
 
 **Marking Scheme:**
 - Correct order of console logs → 10  
