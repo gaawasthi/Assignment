@@ -12,14 +12,15 @@ let tasks = [];
 btn.addEventListener("click", () => {
   const task = inPut.value;
   tasks.push(task);
-  renderData(tasks)
+  renderData(tasks);
 });
 
 function renderData(tasks) {
-    let main = document.getElementById("renderDiv");
-    main.innerHTML = "";
-    tasks.forEach((task) => {
+  let main = document.getElementById("renderDiv");
+  main.innerHTML = "";
+  tasks.forEach((task) => {
     let li = document.createElement("li");
+
     li.innerText = task;
     main.append(li);
   });
