@@ -1,20 +1,44 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <button id="btn" > af</button>
-    <p class="msg" > dsd</p>
-</body>
-<script>
-  
-</script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <input type="text" id="inPut" placeholder="enter the task " />
+        <button id="btn">Enter task</button>
+      </div>
+      <div id="renderDiv"></div>
+    </div>
+  </body>
+  <script>
+    //     Implement a small webpage that:
+    // - Has an input field and a button “Add Task”.
+    // - When the user enters a string and clicks the button → the string should be added to a list below.
+    // - Use `querySelector`, `addEventListener`, and `createElement`.
+    // - Use `map` or `forEach` to render the list after each addition.
+
+    const btn = document.querySelector("#btn");
+    const inPut = document.getElementById("inPut");
+
+    let tasks = [];
+
+    btn.addEventListener("click", () => {
+      let main = document.getElementById("renderDiv");
+      main.innerHTML = "";
+      const task = inPut.value;
+      tasks.push(task);
+
+      tasks.forEach((task) => {
+        let li = document.createElement("li");
+        li.innerText = task;
+        main.append(li);
+      });
+    });
+
+    function renderTask(tasks) {}
+  </script>
 </html>

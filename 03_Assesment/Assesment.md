@@ -174,9 +174,25 @@ const numbers = [1, 2, 3, 4, 5];
 - Use `reduce` to get the sum of numbers.  
 - Log both results.
 
+```js
+
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers
+    .filter(n=>n % 2 ==0)
+    .reduce((a, b) => a + b))
+ ```
+
 6. **Async/Await:**  
 Write a function that fetches data from `https://jsonplaceholder.typicode.com/todos/1` using **async/await** and logs the JSON response.
+```js
+async function getData() {
+    const data = await fetch("https://jsonplaceholder.typicode.com/todos/1")
+    console.log(data);
+    
+}
 
+getData()
+```
 ---
 
 ## 🔵 Section C – Practical Coding Questions (40 Marks → 2 × 20 marks)  
