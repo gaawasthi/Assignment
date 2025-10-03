@@ -67,10 +67,12 @@ console.log(typeof null);
 ```
 a) "null" b) "object" c) "undefined" d) "string"
 
-Answer -> a) "null"
+Answer -> b) "object"
 
 9. Which string method removes whitespace from both ends?  
 a) `slice()` b) `trim()` c) `split()` d) `substring()`
+
+
 Answer -> b) `trim()` 
 
 10. What does `event.preventDefault()` do?
@@ -90,7 +92,7 @@ answer a) `[1,2,3,4]`
 13. What is the difference between **synchronous** and **asynchronous** code in JS? (1-2 lines)
 Answer synchronous means code runs line by line like one block code execute then after completion other block executes and asynchronous means code executes acording to priority asynchronously like proises settimeout etc
 
-14. Which of the following executes first in the event loop?  
+14. Which of the following executes first in thenull event loop?  
 a) setTimeout callback b) Promise `.then()` c) fetch response d) DOMContentLoaded
 
 Answer d) DOMContentLoaded
