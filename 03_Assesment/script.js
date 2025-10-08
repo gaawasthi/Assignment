@@ -6,7 +6,6 @@
 
 const btn = document.querySelector("#btn");
 const inPut = document.getElementById("inPut");
-
 let tasks = [];
 
 btn.addEventListener("click", () => {
