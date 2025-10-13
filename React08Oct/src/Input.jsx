@@ -1,11 +1,12 @@
 import React, { forwardRef } from 'react';
 
 const Input = forwardRef((props, ref) => {
-  const { type, name, value, placeholder, onChange, className } = props;
+  const { type, name, value, placeholder, onChange } = props;
 
   return (
-    <div>
-      <label className="label-class">{placeholder}</label>
+    <div className='form-group' >
+      <label className="form-label">{placeholder}</label>
+
       <input
         type={type}
         name={name}
@@ -13,7 +14,7 @@ const Input = forwardRef((props, ref) => {
         onChange={onChange} 
         placeholder={placeholder}
         ref={ref} 
-        className={className } 
+        className='input-class'
       />
     </div>
   );

@@ -1,0 +1,400 @@
+{
+  "products": [
+    {
+      "id": "7",
+      "product_name": "Camera 7",
+      "product_description": "Digital camera 7",
+      "product_price": 450,
+      "stock": 20,
+      "category": "Photography",
+      "type": "Camera"
+    },
+    {
+      "id": "8",
+      "product_name": "Printer 8",
+      "product_description": "All-in-one printer 8",
+      "product_price": 120,
+      "stock": 30,
+      "category": "Office",
+      "type": "Printer"
+    },
+    {
+      "id": "9",
+      "product_name": "Monitor 9",
+      "product_description": "27-inch LED monitor 9",
+      "product_price": 220,
+      "stock": 18,
+      "category": "Electronics",
+      "type": "Monitor"
+    },
+    {
+      "id": "10",
+      "product_name": "Keyboard 10",
+      "product_description": "Mechanical keyboard 10",
+      "product_price": 80,
+      "stock": 60,
+      "category": "Accessories",
+      "type": "Keyboard"
+    },
+    {
+      "id": "11",
+      "product_name": "Mouse 11",
+      "product_description": "Wireless mouse 11",
+      "product_price": 40,
+      "stock": 75,
+      "category": "Accessories",
+      "type": "Mouse"
+    },
+    {
+      "id": "12",
+      "product_name": "Speaker 12",
+      "product_description": "Bluetooth speaker 12",
+      "product_price": 60,
+      "stock": 45,
+      "category": "Audio",
+      "type": "Speaker"
+    },
+    {
+      "id": "13",
+      "product_name": "Router 13",
+      "product_description": "Wi-Fi router 13",
+      "product_price": 100,
+      "stock": 50,
+      "category": "Networking",
+      "type": "Router"
+    },
+    {
+      "id": "14",
+      "product_name": "Smart TV 14",
+      "product_description": "50-inch smart TV 14",
+      "product_price": 600,
+      "stock": 15,
+      "category": "Electronics",
+      "type": "TV"
+    },
+    {
+      "id": "15",
+      "product_name": "Console 15",
+      "product_description": "Gaming console 15",
+      "product_price": 400,
+      "stock": 25,
+      "category": "Gaming",
+      "type": "Console"
+    },
+    {
+      "id": "16",
+      "product_name": "VR Headset 16",
+      "product_description": "Virtual reality headset 16",
+      "product_price": 350,
+      "stock": 10,
+      "category": "Gaming",
+      "type": "VR"
+    },
+    {
+      "id": "17",
+      "product_name": "External HDD 17",
+      "product_description": "2TB external hard drive 17",
+      "product_price": 90,
+      "stock": 70,
+      "category": "Storage",
+      "type": "HDD"
+    },
+    {
+      "id": "18",
+      "product_name": "SSD 18",
+      "product_description": "1TB solid state drive 18",
+      "product_price": 120,
+      "stock": 40,
+      "category": "Storage",
+      "type": "SSD"
+    },
+    {
+      "id": "19",
+      "product_name": "Drone 19",
+      "product_description": "Camera drone 19",
+      "product_price": 700,
+      "stock": 12,
+      "category": "Gadgets",
+      "type": "Drone"
+    },
+    {
+      "id": "20",
+      "product_name": "Projector 20",
+      "product_description": "Home theater projector 20",
+      "product_price": 500,
+      "stock": 8,
+      "category": "Electronics",
+      "type": "Projector"
+    },
+    {
+      "id": "21",
+      "product_name": "Tablet 21",
+      "product_description": "Tablet with stylus 21",
+      "product_price": 280,
+      "stock": 30,
+      "category": "Electronics",
+      "type": "Tablet"
+    },
+    {
+      "id": "22",
+      "product_name": "Laptop 22",
+      "product_description": "Gaming laptop 22",
+      "product_price": 1200,
+      "stock": 12,
+      "category": "Electronics",
+      "type": "Laptop"
+    },
+    {
+      "id": "23",
+      "product_name": "Printer 23",
+      "product_description": "Laser printer 23",
+      "product_price": 150,
+      "stock": 20,
+      "category": "Office",
+      "type": "Printer"
+    },
+    {
+      "id": "24",
+      "product_name": "Camera 24",
+      "product_description": "DSLR camera 24",
+      "product_price": 800,
+      "stock": 15,
+      "category": "Photography",
+      "type": "Camera"
+    },
+    {
+      "id": "25",
+      "product_name": "Keyboard 25",
+      "product_description": "Wireless keyboard 25",
+      "product_price": 70,
+      "stock": 40,
+      "category": "Accessories",
+      "type": "Keyboard"
+    },
+    {
+      "id": "26",
+      "product_name": "Mouse 26",
+      "product_description": "Gaming mouse 26",
+      "product_price": 50,
+      "stock": 50,
+      "category": "Accessories",
+      "type": "Mouse"
+    },
+    {
+      "id": "27",
+      "product_name": "Speaker 27",
+      "product_description": "Portable speaker 27",
+      "product_price": 80,
+      "stock": 35,
+      "category": "Audio",
+      "type": "Speaker"
+    },
+    {
+      "id": "28",
+      "product_name": "Monitor 28",
+      "product_description": "4K monitor 28",
+      "product_price": 350,
+      "stock": 18,
+      "category": "Electronics",
+      "type": "Monitor"
+    },
+    {
+      "id": "29",
+      "product_name": "Router 29",
+      "product_description": "Mesh Wi-Fi router 29",
+      "product_price": 180,
+      "stock": 25,
+      "category": "Networking",
+      "type": "Router"
+    },
+    {
+      "id": "30",
+      "product_name": "Smart TV 30",
+      "product_description": "65-inch smart TV 30",
+      "product_price": 900,
+      "stock": 10,
+      "category": "Electronics",
+      "type": "TV"
+    },
+    {
+      "id": "31",
+      "product_name": "Console 31",
+      "product_description": "Next-gen gaming console 31",
+      "product_price": 500,
+      "stock": 22,
+      "category": "Gaming",
+      "type": "Console"
+    },
+    {
+      "id": "32",
+      "product_name": "VR Headset 32",
+      "product_description": "VR headset with controllers 32",
+      "product_price": 400,
+      "stock": 12,
+      "category": "Gaming",
+      "type": "VR"
+    },
+    {
+      "id": "33",
+      "product_name": "External HDD 33",
+      "product_description": "4TB external HDD 33",
+      "product_price": 130,
+      "stock": 50,
+      "category": "Storage",
+      "type": "HDD"
+    },
+    {
+      "id": "34",
+      "product_name": "SSD 34",
+      "product_description": "2TB SSD 34",
+      "product_price": 220,
+      "stock": 25,
+      "category": "Storage",
+      "type": "SSD"
+    },
+    {
+      "id": "35",
+      "product_name": "Drone 35",
+      "product_description": "High-end camera drone 35",
+      "product_price": 1200,
+      "stock": 8,
+      "category": "Gadgets",
+      "type": "Drone"
+    },
+    {
+      "id": "36",
+      "product_name": "Projector 36",
+      "product_description": "Portable projector 36",
+      "product_price": 350,
+      "stock": 15,
+      "category": "Electronics",
+      "type": "Projector"
+    },
+    {
+      "id": "37",
+      "product_name": "Tablet 37",
+      "product_description": "Android tablet 37",
+      "product_price": 220,
+      "stock": 35,
+      "category": "Electronics",
+      "type": "Tablet"
+    },
+    {
+      "id": "38",
+      "product_name": "Laptop 38",
+      "product_description": "Ultrabook laptop 38",
+      "product_price": 900,
+      "stock": 10,
+      "category": "Electronics",
+      "type": "Laptop"
+    },
+    {
+      "id": "39",
+      "product_name": "Printer 39",
+      "product_description": "Compact printer 39",
+      "product_price": 100,
+      "stock": 20,
+      "category": "Office",
+      "type": "Printer"
+    },
+    {
+      "id": "40",
+      "product_name": "Camera 40",
+      "product_description": "Mirrorless camera 40",
+      "product_price": 950,
+      "stock": 12,
+      "category": "Photography",
+      "type": "Camera"
+    },
+    {
+      "id": "41",
+      "product_name": "Keyboard 41",
+      "product_description": "RGB keyboard 41",
+      "product_price": 90,
+      "stock": 30,
+      "category": "Accessories",
+      "type": "Keyboard"
+    },
+    {
+      "id": "42",
+      "product_name": "Mouse 42",
+      "product_description": "Ergonomic mouse 42",
+      "product_price": 45,
+      "stock": 40,
+      "category": "Accessories",
+      "type": "Mouse"
+    },
+    {
+      "id": "43",
+      "product_name": "Speaker 43",
+      "product_description": "Smart speaker 43",
+      "product_price": 70,
+      "stock": 28,
+      "category": "Audio",
+      "type": "Speaker"
+    },
+    {
+      "id": "44",
+      "product_name": "Monitor 44",
+      "product_description": "Curved monitor 44",
+      "product_price": 400,
+      "stock": 15,
+      "category": "Electronics",
+      "type": "Monitor"
+    },
+    {
+      "id": "45",
+      "product_name": "Router 45",
+      "product_description": "Dual-band router 45",
+      "product_price": 120,
+      "stock": 40,
+      "category": "Networking",
+      "type": "Router"
+    },
+    {
+      "id": "46",
+      "product_name": "Smart TV 46",
+      "product_description": "55-inch smart TV 46",
+      "product_price": 750,
+      "stock": 12,
+      "category": "Electronics",
+      "type": "TV"
+    },
+    {
+      "id": "47",
+      "product_name": "Console 47",
+      "product_description": "Handheld console 47",
+      "product_price": 250,
+      "stock": 30,
+      "category": "Gaming",
+      "type": "Console"
+    },
+    {
+      "id": "48",
+      "product_name": "VR Headset 48",
+      "product_description": "Standalone VR headset 48",
+      "product_price": 300,
+      "stock": 15,
+      "category": "Gaming",
+      "type": "VR"
+    },
+    {
+      "id": "49",
+      "product_name": "External HDD 49",
+      "product_description": "1TB portable HDD 49",
+      "product_price": 80,
+      "stock": 60,
+      "category": "Storage",
+      "type": "HDD"
+    },
+    {
+      "id": "50",
+      "product_name": "SSD 50",
+      "product_description": "500GB SSD 50",
+      "product_price": 70,
+      "stock": 45,
+      "category": "Storage",
+      "type": "SSD"
+    }
+  ]
+}

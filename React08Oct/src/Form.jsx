@@ -43,18 +43,18 @@ const Form = () => {
 
   const resetForm = () => {
     setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      password: '',
+      firstName:  '',
+      lastName:   '',
+      email:      '',
+      phone:      '',
+      password:   '',
     });
   ageRef.current.value = ''
   };
 
   return (
-    <div className="main">
-      <form className="form-class" onSubmit={handleSubmit}>
+ 
+      <form className="form" onSubmit={handleSubmit}>
         <Input
           type="text"
           name="firstName"
@@ -106,7 +106,7 @@ const Form = () => {
           Submit
         </button>
       </form>
-    </div>
+
   );
 };
 

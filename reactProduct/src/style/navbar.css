@@ -1,0 +1,35 @@
+
+nav {
+ display: flex;
+ background-color: #b2a7ff;
+ gap: 20px;
+padding: 10px 20px;
+    align-items: center;
+}
+nav h1 {
+ color: #fff;
+
+}
+nav ul {
+  display: flex;
+  list-style: none;
+ gap: 40px;
+}
+
+
+nav ul li a {
+    margin: 10px;
+    font-weight: 600;
+    font-size: 30px;
+    color: #fff;
+    text-decoration: none;
+     
+    cursor: pointer;
+
+
+}
+
+nav ul li a:hover {
+    color: #000;
+    text-decoration: underline;
+}

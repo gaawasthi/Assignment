@@ -1,0 +1,10 @@
+.input-group {
+    display: flex;
+    flex-direction: column;
+    padding: 10x;
+    margin-bottom: 10px;
+}
+input {
+    padding: 5px;
+    color: rgb(66, 66, 66);
+}

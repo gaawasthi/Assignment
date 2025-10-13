@@ -1,0 +1,42 @@
+.login-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+h2{
+    color: blueviolet;
+    margin-left: 15px;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.login-form {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button{
+    margin:10px;
+    background-color: lightblue;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 40px;
+}
+input{
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 8px;
+    height: 30px;
+
+}
+label{
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
