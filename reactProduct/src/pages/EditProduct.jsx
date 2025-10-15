@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProductForm from "../components/ProductForm";
 import "../style/EditProduct.css"
+import { useFetch } from "../../useFetch";
+import { usecontext } from "../../context/Context";
 const EditProduct = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -13,21 +15,22 @@ const EditProduct = () => {
     category: "",
 
   });
-  const [loading, setLoading] = useState(true);
+  const {state,dispatch} = usecontext()
 
   useEffect(() => {
     const fetchProduct = async () => {
+      dispatch({ type: 'Fetch_Start' });
       try {
         const res = await fetch(
          "http://localhost:3000/products/"+id
         );
         const data = await res.json();
-        setProduct(data);
+        // setProduct(data);
+         setProduct(data)
+      dispatch({type:'LoadingFalse'})   
       } catch (err) {
         console.log("Error fetching product:", err);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchProduct();
@@ -39,29 +42,32 @@ const EditProduct = () => {
     console.log(product);
     
   }
-  const handleSubmit = async (e) => {
+  const handleSubmit = useCallback(
+  async (e) => {
     e.preventDefault();
-    try{
-      console.log(id);
-      console.log(product)
-      const res = await fetch(  "http://localhost:3000/products/"+id,{
-        method:"PUT",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify(product)
-      })
-      if(res.ok){
-        console.log("product updated ");
-        console.log(id);
-        console.log(product)
-        navigate(`/products`)
-      }
-    }catch(err){
-      console.log("Error updating product:", err);
-    }
-    
-  }
+    try {
+      const data = await useFetch({
+        url: `http://localhost:3000/products/${id}`,
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+      });
 
-  if (loading) return <p className="loading" >Loading...</p>;
+      console.log(data);
+
+      if (data) {
+        console.log("Product updated");
+        console.log(id);
+        console.log(product);
+        navigate(`/products`);
+      }
+    } catch (err) {
+      console.log("error updating product", err);
+    }
+  },
+  [id, product, navigate] 
+);
+  if (state.loading) return <p className="loading" >Loading...</p>;
 
   return (
     <div className="edit-product">

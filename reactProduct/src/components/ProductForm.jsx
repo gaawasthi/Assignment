@@ -23,28 +23,28 @@ const ProductForm = (props) => {
           onChange={handleChange}
           
           
-        />
+        /> 
         <Input
           name="category"
           placeholder="Category"
           value={product.category}
           type="text"
           onChange={handleChange}
-        />
+        /> 
         <Input
           name="product_description"
           placeholder="Description"
           value={product.product_description}
           type="text"
           onChange={handleChange}
-        />
+        /> 
         <Input
           name="product_price"
           placeholder="Price"
           value={product.product_price}
           type="number"
           onChange={handleChange}
-        />
+        /> 
         <Input
           name="stock"
           placeholder="Stock"

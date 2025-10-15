@@ -1,104 +1,100 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import '../style/ProductDetail.css'
-import { AuthContext } from '../../context/AuthContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import '../style/ProductDetail.css';
+import { AuthContext } from '../../context/AuthContext';
+import { usecontext } from '../../context/Context';
 
 const ProductDetail = () => {
-  const { id } = useParams()
-  const [product, setProduct] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const { id } = useParams();
+  // const [product, setProduct] = useState(null)
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext)
-
+  const { user } = useContext(AuthContext);
+  const { state, dispatch } = usecontext();
 
   useEffect(() => {
     const fetchProduct = async () => {
-      setLoading(true)
+      dispatch({ type: 'Fetch_Start' });
+
       try {
-        const response = await fetch("http://localhost:3000/products/" + id
-        )
-        const data = await response.json()
-        setProduct(data)
-        setLoading(false)
-      }
-      catch (error) {
-        console.error("Error fetching product:", error);
-      }
+        const response = await fetch(`http://localhost:3000/products/${id}`);
+        const data = await response.json();
 
-    }
-    fetchProduct()
-  }, [])
-  console.log(product);
+        dispatch({ type: 'Fetch_single_Product', payload: data });
+      } catch (error) {
+        console.error('Error fetching product:', error);
+      }
+    };
 
-  if (loading) {
-    return <div className='loading' > Loading.... </div>
+    fetchProduct();
+  }, [id, dispatch]);
+
+  if (state.loading) {
+    return <div className="loading"> Loading.... </div>;
   }
 
   const editProduct = () => {
     if (user) {
-      navigate(`/product/edit/${product.id}`)
-    }else{
-      alert("Login to edit product")
-      navigate('/')
+      navigate(`/product/edit/${state.product.id}`);
+    } else {
+      alert('Login to edit product');
+      navigate('/');
     }
-
-
-  }
+  };
 
   const deleteProduct = async () => {
-    if(user){
+    if (user) {
       try {
-      const res = await fetch(`http://localhost:3000/products/${id}`, {
-        method: "DELETE"
-      });
-      if (res.ok) {
-        alert("Product deleted successfully");
-        navigate("/products");
+        const res = await fetch(`http://localhost:3000/products/${id}`, {
+          method: 'DELETE',
+        });
+        if (res.ok) {
+          alert('Product deleted successfully');
+          navigate('/products');
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
-
+    } else {
+      alert('Login to delete product');
+      navigate('/');
     }
-    }else{
-        alert("Login to delete product")
-      navigate('/')
-    }
-  }
+  };
 
   return (
-    <div className='product-detail' >
-      <button className='close-btn' onClick={() => {
-        navigate(-1);
-      }} >
+    <div className="product-detail">
+      <button
+        className="close-btn"
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
         X
       </button>
-      <h1 className='d-product-name' >
-        Product Name : {product?.product_name}
-      </ h1>
-      <div className='d-product-category' >
-        Category : {product?.category}
+      <h1 className="d-product-name">
+        Product Name : {state.product?.product_name}
+      </h1>
+      <div className="d-product-category">
+        Category : {state.product?.category}
       </div>
 
-      <div className='d-product-description' >
-        Description : {product?.product_description}
+      <div className="d-product-description">
+        Description : {state.product?.product_description}
       </div>
-      <div className='d-product-price' >
-        Price : ${product?.product_price}
+      <div className="d-product-price">
+        Price : ${state.product?.product_price}
       </div>
-      <div className='d-product-stock' >
-        Stock : {product?.stock}
+      <div className="d-product-stock">Stock : {state.product?.stock}</div>
 
+       <div className="actions">
+         <button onClick={editProduct} className="action-btnE">
+          Edit
+         </button>
+         <button onClick={deleteProduct} className="action-btnD">
+          Delete
+        </button>
       </div>
-
-      <div className="actions">
-        <button onClick={editProduct} className="action-btnE">Edit</button>
-        <button
-          onClick={deleteProduct}
-          className="action-btnD">Delete</button>
-      </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

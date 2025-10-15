@@ -61,6 +61,7 @@ const Login = () => {
         />
 
         <button type="submit">Login</button>
+           <h4 className='register-link' onClick={()=>{navigate("/register")}}  >New user click here to register</h4>
       </form>
     </div>
   );

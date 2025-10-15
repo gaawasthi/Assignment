@@ -1,58 +1,12 @@
 {
   "products": [
     {
-      "id": "7",
-      "product_name": "Camera 7",
-      "product_description": "Digital camera 7",
-      "product_price": 450,
-      "stock": 20,
-      "category": "Photography",
-      "type": "Camera"
-    },
-    {
-      "id": "8",
-      "product_name": "Printer 8",
-      "product_description": "All-in-one printer 8",
-      "product_price": 120,
-      "stock": 30,
-      "category": "Office",
-      "type": "Printer"
-    },
-    {
-      "id": "9",
-      "product_name": "Monitor 9",
-      "product_description": "27-inch LED monitor 9",
-      "product_price": 220,
-      "stock": 18,
-      "category": "Electronics",
-      "type": "Monitor"
-    },
-    {
+      "product_name": "vodka",
       "id": "10",
-      "product_name": "Keyboard 10",
-      "product_description": "Mechanical keyboard 10",
-      "product_price": 80,
-      "stock": 60,
-      "category": "Accessories",
-      "type": "Keyboard"
-    },
-    {
-      "id": "11",
-      "product_name": "Mouse 11",
-      "product_description": "Wireless mouse 11",
-      "product_price": 40,
-      "stock": 75,
-      "category": "Accessories",
-      "type": "Mouse"
-    },
-    {
-      "id": "12",
-      "product_name": "Speaker 12",
-      "product_description": "Bluetooth speaker 12",
-      "product_price": 60,
-      "stock": 45,
-      "category": "Audio",
-      "type": "Speaker"
+      "category": "Laborum amet anim s",
+      "product_description": "Et ducimus ipsum l",
+      "product_price": "1685",
+      "stock": "60"
     },
     {
       "id": "13",
@@ -68,7 +22,7 @@
       "product_name": "Smart TV 14",
       "product_description": "50-inch smart TV 14",
       "product_price": 600,
-      "stock": 15,
+      "stock": "0",
       "category": "Electronics",
       "type": "TV"
     },
@@ -170,15 +124,6 @@
       "stock": 40,
       "category": "Accessories",
       "type": "Keyboard"
-    },
-    {
-      "id": "26",
-      "product_name": "Mouse 26",
-      "product_description": "Gaming mouse 26",
-      "product_price": 50,
-      "stock": 50,
-      "category": "Accessories",
-      "type": "Mouse"
     },
     {
       "id": "27",
