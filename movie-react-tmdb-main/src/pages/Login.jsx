@@ -52,15 +52,6 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="flex items-center justify-between mt-4 text-sm">
-          <label className="flex items-center text-gray-400">
-            <input type="checkbox" className="mr-2" />
-            Remember me
-          </label>
-          <a href="#" className="text-blue-400 hover:underline">
-            Forgot password?
-          </a>
-        </div>
 
         <p className="text-gray-400 text-sm mt-6 text-center">
           Don't have an account?{" "}

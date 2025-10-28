@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { searchMovie } from '../redux/features/movieSlice';
 import MovieCard from '../components/MovieCard';
+import Loading from '../components/Loading';
 
 
 const SearchPage = () => {
@@ -15,10 +16,11 @@ const SearchPage = () => {
   useEffect(() => {
     dispatch(searchMovie(eq));
     console.log(eq);
+    window.scrollTo({top:0})
     
   }, [dispatch, eq]);
 
-  if (loading) return <p className="text-white m-5 text-lg text-center">Loading movies...</p>;
+  if (loading) return <Loading/>
   if (error) return <p className="text-red-500 m-5 text-center">Error: {error}</p>;
 
   return (

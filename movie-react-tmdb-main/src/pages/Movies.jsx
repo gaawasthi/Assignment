@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MovieCard from '../components/MovieCard';
-import { discoverMovies, fetchByGenre, setPage } from '../redux/features/movieSlice';
+import {
+  discoverMovies,
+  fetchByGenre,
+  fetchMovieByRating,
+  setPage,
+} from '../redux/features/movieSlice';
 import Loading from '../components/Loading';
 
 const Movies = () => {
@@ -10,7 +15,8 @@ const Movies = () => {
     (state) => state.movies
   );
 
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState('');
+  const [sortRating,setSortRating] = useState('')
 
   const genresList = [
     { id: 28, name: 'Action' },
@@ -37,35 +43,55 @@ const Movies = () => {
   useEffect(() => {
     if (genre) {
       dispatch(fetchByGenre({ genreId: Number(genre), page }));
-    } else {
+    }else if(sortRating) {
+        dispatch(fetchMovieByRating({ type:sortRating ,page}))
+    }
+    else {
       dispatch(discoverMovies(page));
     }
-  }, [dispatch, page, genre]);
-
+  }, [dispatch, page, genre,sortRating]);
+  useEffect(()=>{
+             window.scrollTo({ top: 0 });
+   },[])
   return (
     <div className="p-5 mt-15 min-h-screen">
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="flex flex-col items-center justify-center text-3xl text-amber-50 space-y-2 mb-10">
-            <div>Filter by Genre</div>
-            <div>
-              <select
-                onChange={(e) => setGenre(e.target.value)}
-                value={genre}
-                name="genre"
-                className="text-black bg-white px-2 py-1 rounded"
-              >
-                <option value="">Select genre</option>
-                {genresList.map((g) => (
-                  <option key={g.id} value={g.id}>
-                    {g.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+        <div className="mb-8 flex flex-row flex-wrap gap-4 ">
+  <div >
+    <select
+      onChange={(e) => setGenre(e.target.value)}
+      value={genre}
+      name="genre"
+      className="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors cursor-pointer"
+    >
+      <option value="">Filter by Genre</option>
+      {genresList.map((g) => (
+        <option
+          className="text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800"
+          key={g.id}
+          value={g.id}
+        >
+          {g.name}
+        </option>
+      ))}
+    </select>
+  </div>
+  
+  <div>
+    <select
+      onChange={(e) => setSortRating(e.target.value)}
+      value={sortRating}
+      name="rating"
+      className="px-4 py-2.5 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors cursor-pointer"
+    >
+      <option value="">Sort By </option>
+      <option value="vote_average.desc">Highest Rating</option>
+    </select>
+  </div>
+</div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
             {discover.map((movie) => (
@@ -84,19 +110,19 @@ const Movies = () => {
             <button
               disabled={page === 1}
               onClick={() => dispatch(setPage(page - 1))}
-              className="text-lg border border-gray-500 px-4 py-1 rounded-lg text-white disabled:opacity-50"
+              className="text-lg border border-gray-500 px-4 py-1 rounded-lg text-black  dark:text-white disabled:opacity-50"
             >
               ← Previous
             </button>
 
-            <span className="text-white text-lg font-semibold">
+            <span className="text-black  dark:text-white text-lg font-semibold">
               Page {page} / {total_pages}
             </span>
 
             <button
               disabled={page === total_pages}
               onClick={() => dispatch(setPage(page + 1))}
-              className="text-lg border border-gray-500 px-4 py-1 rounded-lg text-white disabled:opacity-50"
+              className="text-lg border border-gray-500 px-4 py-1 rounded-lg text-black  dark:text-white disabled:opacity-50"
             >
               Next →
             </button>

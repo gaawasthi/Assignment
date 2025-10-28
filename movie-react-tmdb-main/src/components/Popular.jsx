@@ -10,13 +10,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import MovieCard from './MovieCard';
 import Loading from './Loading';
+import { useNavigate } from 'react-router-dom';
 
 const Popular = () => {
   const dispatch = useDispatch();
   const { popular, loading, error } = useSelector((state) => state.movies);
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchPopularMovies());
+     window.scrollTo({top:0})
   }, [dispatch]);
 
   if (error)
@@ -29,8 +32,8 @@ const Popular = () => {
       ) : (
         <>
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-3xl text-white font-bold">Popular Movies</h1>
-            <button className="text-lg text-white border border-gray-500 px-4 py-1 rounded-lg hover:bg-gray-700 transition">
+            <h1 className="text-3xl  text-black dark:text-white font-bold">Popular Movies</h1>
+            <button className="text-lg text-black dark:text-white border border-gray-500 px-4 py-1 rounded-lg hover:bg-gray-700 transition">
               View More
             </button>
           </div>

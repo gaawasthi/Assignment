@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { removeFavorite } from '../redux/features/authSlice';
+import { removeFavorite, removeRecent, removeWatchNext } from '../redux/features/authSlice';
+import WatchNext from './WatchNext';
 
 const MovieCard2 = ({
   id,
@@ -9,6 +10,7 @@ const MovieCard2 = ({
   vote_average,
   poster,
   release_date,
+  mod,
 
 }) => {
   const navigate = useNavigate();
@@ -20,15 +22,24 @@ const MovieCard2 = ({
   };
 const onRemove = (e) => {
   e.stopPropagation();
-  dispatch(removeFavorite(id));
+  if (mod=="favo"){
+      dispatch(removeFavorite(id));
+  }else if(mod=="watchnext"){
+     dispatch(removeWatchNext(id))
+
+  }
+  else{
+        dispatch(removeRecent(id))
+   
+  }
 };
 
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col  p-2 text-sm">
       <div
-        className="relative rounded-2xl overflow-hidden shadow-lg group bg-gray-900 cursor-pointer"
+        className="relative rounded-2xl  overflow-hidden shadow-lg group bg-gray-900 cursor-pointer"
         onClick={handleClick}
       >
         <div

@@ -8,6 +8,7 @@ const admin = {
   favorites: [],
   watchNext: [],
   recentlyViewed: [],
+  theme: 'light',
 };
 
 const storedUsers = localStorage.getItem('users');
@@ -49,6 +50,7 @@ const authSlice = createSlice({
         favorites: [],
         watchNext: [],
         recentlyViewed: [],
+        theme: 'light',
       };
 
       state.users.push(newUser);
@@ -87,41 +89,138 @@ const authSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+
     addToFavorite: (state, action) => {
       const movie = action.payload;
-
       if (!state.currentUser) return;
 
       if (!state.currentUser.favorites) {
         state.currentUser.favorites = [];
       }
 
-      if (!state.currentUser.favorites.some((fav) => fav.id === movie.id)) {
-        state.currentUser.favorites.push(movie);
-      }
+      state.currentUser.favorites.push(movie);
 
       const index = state.users.findIndex(
         (user) => user.id === state.currentUser.id
       );
-
       state.users[index] = state.currentUser;
 
       localStorage.setItem('users', JSON.stringify(state.users));
       localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
     },
-    // reducer remove favorite
+
     removeFavorite: (state, action) => {
       const removeId = action.payload;
-      console.log(removeId);
 
       state.currentUser.favorites = state.currentUser.favorites.filter(
         (item) => item.id !== removeId
       );
+
       const index = state.users.findIndex(
         (user) => user.id === state.currentUser.id
       );
-      console.log(state.currentUser.favorites);
+      state.users[index] = state.currentUser;
 
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+
+    addToWatchNext: (state, action) => {
+      const movie = action.payload;
+      if (!state.currentUser) return;
+
+      if (!state.currentUser.watchNext) {
+        state.currentUser.watchNext = [];
+      }
+
+      state.currentUser.watchNext.push(movie);
+
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
+      state.users[index] = state.currentUser;
+
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+    recentlyViewed: (state, action) => {
+      const movie = action.payload;
+      if (!state.currentUser) return;
+
+      if (!state.currentUser.recentlyViewed) {
+        state.currentUser.recentlyViewed = [];
+      }
+
+      const exists = state.currentUser.recentlyViewed.some(
+        (m) => m.id === movie.id
+      );
+
+      if (!exists) {
+        state.currentUser.recentlyViewed.push(movie);
+
+        const index = state.users.findIndex(
+          (user) => user.id === state.currentUser.id
+        );
+        state.users[index] = state.currentUser;
+
+        localStorage.setItem('users', JSON.stringify(state.users));
+        localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+      }
+    },
+
+    removeRecent: (state, action) => {
+      const removeId = action.payload;
+
+      state.currentUser.recentlyViewed =
+        state.currentUser.recentlyViewed.filter((item) => item.id !== removeId);
+
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
+      state.users[index] = state.currentUser;
+
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+
+    removeWatchNext: (state, action) => {
+      const removeId = action.payload;
+
+      state.currentUser.watchNext = state.currentUser.watchNext.filter(
+        (item) => item.id !== removeId
+      );
+
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
+      state.users[index] = state.currentUser;
+
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+
+    toggleTheme: (state) => {
+      if (!state.currentUser) return;
+
+      const newTheme = state.currentUser.theme === 'dark' ? 'light' : 'dark';
+      state.currentUser.theme = newTheme;
+
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
+      state.users[index] = state.currentUser;
+
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+
+    setTheme: (state, action) => {
+      if (!state.currentUser) return;
+
+      state.currentUser.theme = action.payload;
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
       state.users[index] = state.currentUser;
 
       localStorage.setItem('users', JSON.stringify(state.users));
@@ -137,5 +236,12 @@ export const {
   clearError,
   addToFavorite,
   removeFavorite,
+  toggleTheme,
+  setTheme,
+  addToWatchNext,
+  removeWatchNext,
+  recentlyViewed,
+  removeRecent,
 } = authSlice.actions;
+
 export default authSlice.reducer;

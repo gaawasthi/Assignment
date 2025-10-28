@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_KEY = 'bc17906574f644dfdbba58c366c22e10';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-
+//https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.asc'
 
 // Fetch single movie
 export const fetchMovieDetail = createAsyncThunk(
@@ -16,7 +16,9 @@ export const fetchMovieDetail = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -31,7 +33,9 @@ export const fetchUpcomingMovies = createAsyncThunk(
       );
       return response.data.results;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -46,7 +50,9 @@ export const fetchPopularMovies = createAsyncThunk(
       );
       return response.data.results;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -61,7 +67,9 @@ export const fetchTopRatedMovies = createAsyncThunk(
       );
       return response.data.results;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -77,7 +85,9 @@ export const discoverMovies = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -88,11 +98,15 @@ export const searchMovie = createAsyncThunk(
   async (query, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}&language=en-US&page=1`
+        `${BASE_URL}/search/movie?query=${encodeURIComponent(
+          query
+        )}&api_key=${API_KEY}&language=en-US&page=1`
       );
       return response.data.results;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
@@ -108,23 +122,45 @@ export const fetchByGenre = createAsyncThunk(
           language: 'en-US',
           with_genres: genreId,
           page,
+          
         },
       });
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data?.status_message || error.message);
+      return rejectWithValue(
+        error.response?.data?.status_message || error.message
+      );
     }
   }
 );
 
-
-
+// fitler movie by sorted
+export const fetchMovieByRating = createAsyncThunk(
+  'movies/fetchMovieByRating',
+  async ( { type, page = 1}, { rejectWithValue }) => {
+    try {
+       const response = await axios.get(`${BASE_URL}/discover/movie`, {
+        params: {
+          api_key: API_KEY,
+          language: 'en-US',
+           sort_by :type,
+           
+          page,
+          
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue();
+    }
+  }
+);
 const initialState = {
   upcoming: [],
   popular: [],
   top_rated: [],
   discover: [],
-  movieDetail: null, 
+  movieDetail: null,
   searchMovies: [],
   loading: false,
   error: null,
@@ -132,8 +168,6 @@ const initialState = {
   total_pages: 1,
   genre: [],
 };
-
-
 
 const moviesSlice = createSlice({
   name: 'movies',
@@ -152,7 +186,7 @@ const moviesSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     };
-      
+
     builder
       // Upcoming
       .addCase(fetchUpcomingMovies.pending, handlePending)
@@ -187,7 +221,10 @@ const moviesSlice = createSlice({
         state.loading = false;
         state.discover = action.payload.results;
         state.total_pages = action.payload.total_pages;
-        localStorage.setItem('discoverMovies', JSON.stringify(action.payload.results));
+        localStorage.setItem(
+          'discoverMovies',
+          JSON.stringify(action.payload.results)
+        );
       })
       .addCase(discoverMovies.rejected, handleRejected)
 
@@ -197,10 +234,25 @@ const moviesSlice = createSlice({
         state.loading = false;
         state.discover = action.payload.results;
         state.total_pages = action.payload.total_pages;
-        localStorage.setItem('discoverMovies', JSON.stringify(action.payload.results));
+        localStorage.setItem(
+          'discoverMovies',
+          JSON.stringify(action.payload.results)
+        );
       })
       .addCase(fetchByGenre.rejected, handleRejected)
 
+      // sort
+      .addCase(fetchMovieByRating.pending, handlePending)
+      .addCase(fetchMovieByRating.fulfilled, (state, action) => {
+        state.loading = false;
+        state.discover = action.payload.results;
+        state.total_pages = action.payload.total_pages;
+        localStorage.setItem(
+          'discoverMovies',
+          JSON.stringify(action.payload.results)
+        );
+      })
+           .addCase(fetchMovieByRating.rejected,handleRejected)
       // Movie Detail
       .addCase(fetchMovieDetail.pending, handlePending)
       .addCase(fetchMovieDetail.fulfilled, (state, action) => {
