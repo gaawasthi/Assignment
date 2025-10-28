@@ -35,42 +35,112 @@ The UI is responsive
 
 - **Frontend:** React.js, React Router DOM
 - **State Management:** Redux Toolkit
-- **Styling:** Tailwind CSS
-- **HTTP Requests:** Axios
-- **Carousel:** Swiper.js
-- **Icons:** Lucide React
+# Movie Management App (MMS)
 
+A responsive Movie web application built with React + Vite that consumes The Movie Database (TMDb) API to browse, search and save movies. It includes Redux Toolkit for state, Tailwind CSS for styling, and Swiper for carousels.
+
+## Quick overview
+
+- Browse popular, top-rated and upcoming movies
+- View movie details (images, overview, genres, rating)
+- Save favorites and build a “Watch Next” list (persisted in localStorage)
+- Authentication-like flows (simple signup/login persisted locally)
+- Responsive UI built with Tailwind CSS
+
+## Tech stack
+
+- React (Vite)
+- Redux Toolkit
+- Tailwind CSS
+- Axios
+- Swiper.js
+- Lucide React (icons)
+
+## Prerequisites
+
+- Node.js 16+ and npm or yarn
+- A TMDb API key (free from https://www.themoviedb.org/settings/api)
+
+## Environment variables
+
+This project uses Vite. Create a `.env` or `.env.local` in the project root with:
+
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+
+The app expects the API key to be available via `import.meta.env.VITE_TMDB_API_KEY`.
+
+## Install and run
+
+1. Install dependencies
+
+```bash
+npm install
+# or
+# yarn
+```
+
+2. Start the dev server
+
+```bash
+npm run dev
+```
+
+3. Build for production
+
+```bash
+npm run build
+```
+
+4. Preview built site
+
+```bash
+npm run preview
+```
+
+5. Lint (if ESLint is configured)
+
+```bash
+npm run lint
+```
+
+These commands are taken from the project's `package.json` scripts.
+
+## Folder structure (important files)
+
+- `index.html` - Vite entry
+- `src/main.jsx` - app bootstrap
+- `src/App.jsx` - top-level routes and layout
+- `src/components/` - UI components (MovieCard, NavBar, MovieDetail, etc.)
+- `src/pages/` - route pages (Home, Movies, Profile, Login, SignUp, NotFound)
+- `src/redux/` - Redux store and slices (`app/store.js`, `features/*`)
+
+## Notes about TMDb
+
+- Use your TMDb API key via `VITE_TMDB_API_KEY`.
+- TMDb images use a base URL (the app uses the correct image sizes internally).
+
+## Contributing
+
+- Feel free to open issues or pull requests.
+- Small suggestions:
+  - Add unit tests for slices and components
+  - Add CI (GitHub Actions) for lint/build checks
+
+## Troubleshooting
+
+- If you see empty results, ensure `VITE_TMDB_API_KEY` is valid and your rate limits are not exceeded.
+- For CORS or network errors, check your network and the TMDb service status.
+
+## License & author
+
+This project is provided as-is. Add a license file if you intend to publish it.
 
 ---
 
-## 🏗️ Project Structure
-
-
-
-## Features
-
-### Core Features
-
-- **Authentication:** Login/Signup using `localStorage`, logout, and protected routes.
-- **Routing:**  
-  `/login`, `/signup`, `/movies`, `/movies/:id`, `/profile`, `404` page.
-- **Movie List Page:**  
-  Filter by Genre.
-- **Movie Details Page:**  
-  Full movie information
-- **User Profile Page:**  
-  Edit favorite movies
-- **Responsive Design:** Fully mobile-friendly UI with Tailwind CSS.
-  .
-
-### Bonus / Optional Features
-
-- Live **Search** for movies using TMDb API.
-- Pagination for movie lists.
-- **Theme Switcher** (dark/light mode).
-- Recently viewed section on profile page.
-
----
+If you want, I can also:
+- add an example `.env.example`
+- add a short section showing the most important components (`NavBar`, `MovieCard`, `MovieDetail`)
+- add a screenshot or deployment instructions
 
 
 
