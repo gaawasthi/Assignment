@@ -45,39 +45,7 @@ The UI is responsive
 
 ## 🏗️ Project Structure
 
-```
-src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── AuthGuard.jsx
-│   ├── Sidebar.jsx
-│   ├── MovieCard.jsx
-│   ├── Loading.jsx
-│   └── ...
-│
-├── features/
-│   └── Movies/
-│       ├── movieSlice.js
-│       └── ...
-│
-├── pages/
-│   ├── Home.jsx
-│   ├── Login.jsx
-│   ├── Signup.jsx
-│   ├── Profile.jsx
-│   ├── Movies.jsx
-│   ├── MovieDetail.jsx
-│   ├── TVSeries.jsx
-│   ├── TvDetail.jsx
-│   ├── SearchResults.jsx
-│   └── PageNotFound.jsx
-│
-├── App.jsx
-├── App.css
-└── main.jsx
-```
 
----
 
 ## Features
 
