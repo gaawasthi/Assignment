@@ -137,10 +137,7 @@ This project is provided as-is. Add a license file if you intend to publish it.
 
 ---
 
-If you want, I can also:
-- add an example `.env.example`
-- add a short section showing the most important components (`NavBar`, `MovieCard`, `MovieDetail`)
-- add a screenshot or deployment instructions
+
 
 
 
