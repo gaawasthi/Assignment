@@ -1,34 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const admin = {
-  id: 'admin-001',
-  name: 'Admin',
-  email: 'admin@123.com',
-  password: '1234',
-  favorites: [],
-  watchNext: [],
-  recentlyViewed: [],
-  theme: 'light',
-};
-
-const storedUsers = localStorage.getItem('users');
-const storedCurrentUser = localStorage.getItem('currentUser');
-
-const initialUsers = storedUsers ? JSON.parse(storedUsers) : [admin];
-const initialCurrentUser = storedCurrentUser
-  ? JSON.parse(storedCurrentUser)
-  : null;
-
-if (!storedUsers) {
-  localStorage.setItem('users', JSON.stringify([admin]));
-}
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    users: initialUsers,
-    currentUser: initialCurrentUser,
-    isAuthenticated: !!initialCurrentUser,
+    users: JSON.parse(localStorage.getItem('users')) || [],
+    currentUser: JSON.parse(localStorage.getItem('currentUser')) || null,
+    isAuthenticated: !!localStorage.getItem('currentUser'),
     error: null,
   },
 
@@ -94,10 +71,7 @@ const authSlice = createSlice({
       const movie = action.payload;
       if (!state.currentUser) return;
 
-      if (!state.currentUser.favorites) {
-        state.currentUser.favorites = [];
-      }
-
+      state.currentUser.favorites = state.currentUser.favorites || [];
       state.currentUser.favorites.push(movie);
 
       const index = state.users.findIndex(
@@ -111,6 +85,7 @@ const authSlice = createSlice({
 
     removeFavorite: (state, action) => {
       const removeId = action.payload;
+      if (!state.currentUser) return;
 
       state.currentUser.favorites = state.currentUser.favorites.filter(
         (item) => item.id !== removeId
@@ -129,10 +104,7 @@ const authSlice = createSlice({
       const movie = action.payload;
       if (!state.currentUser) return;
 
-      if (!state.currentUser.watchNext) {
-        state.currentUser.watchNext = [];
-      }
-
+      state.currentUser.watchNext = state.currentUser.watchNext || [];
       state.currentUser.watchNext.push(movie);
 
       const index = state.users.findIndex(
@@ -143,13 +115,29 @@ const authSlice = createSlice({
       localStorage.setItem('users', JSON.stringify(state.users));
       localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
     },
+
+    removeWatchNext: (state, action) => {
+      const removeId = action.payload;
+      if (!state.currentUser) return;
+
+      state.currentUser.watchNext = state.currentUser.watchNext.filter(
+        (item) => item.id !== removeId
+      );
+
+      const index = state.users.findIndex(
+        (user) => user.id === state.currentUser.id
+      );
+      state.users[index] = state.currentUser;
+
+      localStorage.setItem('users', JSON.stringify(state.users));
+      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
+    },
+
     recentlyViewed: (state, action) => {
       const movie = action.payload;
       if (!state.currentUser) return;
 
-      if (!state.currentUser.recentlyViewed) {
-        state.currentUser.recentlyViewed = [];
-      }
+      state.currentUser.recentlyViewed = state.currentUser.recentlyViewed || [];
 
       const exists = state.currentUser.recentlyViewed.some(
         (m) => m.id === movie.id
@@ -170,25 +158,10 @@ const authSlice = createSlice({
 
     removeRecent: (state, action) => {
       const removeId = action.payload;
+      if (!state.currentUser) return;
 
       state.currentUser.recentlyViewed =
         state.currentUser.recentlyViewed.filter((item) => item.id !== removeId);
-
-      const index = state.users.findIndex(
-        (user) => user.id === state.currentUser.id
-      );
-      state.users[index] = state.currentUser;
-
-      localStorage.setItem('users', JSON.stringify(state.users));
-      localStorage.setItem('currentUser', JSON.stringify(state.currentUser));
-    },
-
-    removeWatchNext: (state, action) => {
-      const removeId = action.payload;
-
-      state.currentUser.watchNext = state.currentUser.watchNext.filter(
-        (item) => item.id !== removeId
-      );
 
       const index = state.users.findIndex(
         (user) => user.id === state.currentUser.id
